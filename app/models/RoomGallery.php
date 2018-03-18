@@ -31,4 +31,15 @@ class RoomGallery{
 
     }
 
+    public function createConnection(){
+
+        $database = new DatabaseConn;
+        $this->conn = $database->connection;
+
+    }
+
+    public function closeConnection(){
+        $this->conn->close();
+    }
+
 }

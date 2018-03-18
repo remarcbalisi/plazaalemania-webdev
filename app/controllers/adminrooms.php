@@ -16,7 +16,7 @@ class AdminRooms extends Controller{
         }
 
         // create an image manager instance with favored driver
-        $this->image_manager = new ImageManager(array('driver' => 'imagick'));
+        $this->image_manager = new ImageManager(array('driver' => 'gd'));
 
     }
 
@@ -80,7 +80,9 @@ class AdminRooms extends Controller{
                     // $new_gallery->room_id = $new_room->id;
                     // $new_gallery->save();
 
-                    $img = $this->image_manager->make($image)->save($path);
+                    $img = $this->image_manager->make($image["tmp_name"]);
+                    echo $image["tmp_name"];
+                    move_uploaded_file($img, $path);
                     $new_room_gallery = $this->model('RoomGallery');
                     $new_room_gallery->image_name = $filename;
                     $new_room_gallery->directory = $path;

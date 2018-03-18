@@ -5,7 +5,10 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/admin/css/style3.css">
-    <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/admin/css/jquery-ui.css">
+    <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/admin/css/room-type-table.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Globals::baseUrl(); ?>/public/admin/css/jquery-ui.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
     <!-- STYLES END -->
 
     <!-- JQUERY -->
@@ -16,11 +19,12 @@
 <body>
 
 <div class="sidenav">
-  <a href="#about">Dashboard</a>
-  <a href="#services">Rooms</a>
+  <a href="<?php echo Globals::baseUrl(); ?>/public/adminhome">Dashboard</a>
+  <a href="<?php echo Globals::baseUrl(); ?>/public/adminrooms">Rooms</a>
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a>
+  <a href="<?php echo Globals::baseUrl() ?>/public/adminhome/logout">Logout</a>
 </div>
 
 </body>

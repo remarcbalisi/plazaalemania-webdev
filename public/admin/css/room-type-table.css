@@ -1,0 +1,35 @@
+#myTable {
+  box-sizing: border-box;
+}
+
+#roomtypeinput {
+  background-image: url('/plazaalemaniawebdev/public/admin/images/search-icon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  width: 94.5%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#roomtypetable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#roomtypetable th, #roomtypetable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#roomtypetable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#roomtypetable tr.header, #roomtypetable tr:hover {
+  background-color: #f1f1f1;
+}

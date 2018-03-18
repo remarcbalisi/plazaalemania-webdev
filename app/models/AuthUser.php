@@ -75,6 +75,35 @@ class AuthUser{
 
     }
 
+    public function checkRole($user_role_id, $role){
+        $this->createConnection();
+
+        $sql = "SELECT * FROM role WHERE id = '".$user_role_id."'";
+        $result = $this->conn->query($sql);
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                if( $row['name'] == $role ){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+        } else {
+            return false;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function createConnection(){
 
         $database = new DatabaseConn;

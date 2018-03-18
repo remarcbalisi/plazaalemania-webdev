@@ -6,6 +6,10 @@ class AdminHome extends Controller{
 
     public function __construct(){
         $this->auth_user = $this->model('AuthUser');
+        if( !$this->auth_user->checkRole($this->auth_user->role_id, "admin") ){
+            echo "Unauthorized Access";
+            exit();
+        }
     }
 
     public function index(){

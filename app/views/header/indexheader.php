@@ -58,6 +58,11 @@
 
     <!-- CONTENT HERE -->
 
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>Plaza Alemania &copy; 2018</p>
+    </div>
+    <!-- END FOOTER -->
     <script type="text/javascript" src="<?php echo Globals::baseUrl(); ?>/public/index/js/stickynav.js"></script>
 
 </body>

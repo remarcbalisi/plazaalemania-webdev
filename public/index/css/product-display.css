@@ -54,14 +54,14 @@
       display: inline-block;
       padding: 8px;
       color: white;
-      background-color: #000;
+      background-color: #1B2343;
       text-align: center;
       cursor: pointer;
       width: 100%;
     }
 
         .product-container-button:hover {
-            background-color: #555;
+            background-color: #54709E;
         }
         @keyframes shake {
             0% { transform: translate(1px, 1px) rotate(0deg); }

@@ -3,6 +3,14 @@
 
 <div class="content">
 
+    <div class="content-paragraph">
+        <i class="fas fa-quote-left fa-2x fa-pull-left fa-border"></i>
+        <p>
+            Set on the peaceful Hotel Rooms of Plaza Alemania, the Hotel welcomes guests with a beautiful grand hall. Elegant rooms, boasts a private hot tub for guests to relax in.
+        </p>
+    </div>
+
+
     <div class="product">
         <div class="product-row">
           <div class="product-column">

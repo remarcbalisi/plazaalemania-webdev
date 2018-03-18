@@ -52,7 +52,16 @@
   <div class="add-room-types">
       <div class="container">
         <h3>Add New Room Type</h3>
-        <form action="/action_page.php">
+
+        <?php if( !empty($data['status']) ): ?>
+            <?php if( $data['status'] == 409 && $data['for_form'] == 'addroomtype' ): ?>
+                <p style="color:red"><?=$data['message']?></p>
+            <?php elseif( $data['status'] == 200 && $data['for_form'] == 'addroomtype' ): ?>
+                <p style="color:green"><?=$data['message']?></p>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <form method="POST" action="<?php echo Globals::baseUrl(); ?>/public/adminrooms/addroomtype">
           <label for="room_name">Room Name</label>
           <input class="input" type="text" id="room_name" name="room_name" placeholder="Room name..">
 
@@ -65,8 +74,8 @@
           <label for="description">Description</label>
           <textarea class="input" id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
 
-          <label for="branch">Branch</label>
-          <select class="input" id="branch" name="branch">
+          <label for="branch_id">Branch</label>
+          <select class="input" id="branch_id" name="branch_id">
             <?php foreach( $data['branches'] as $b ): ?>
                 <option value="<?php echo $b['id']; ?>"><?php echo $b['name']; ?></option>
             <?php endforeach; ?>

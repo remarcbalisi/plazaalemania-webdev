@@ -16,7 +16,7 @@ class AdminRooms extends Controller{
         }
 
         // create an image manager instance with favored driver
-        $this->image_manager = new ImageManager(array('driver' => 'imagick'));
+        $this->image_manager = new ImageManager(array('driver' => 'gd'));
 
     }
 

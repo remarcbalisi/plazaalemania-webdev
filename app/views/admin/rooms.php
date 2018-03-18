@@ -5,7 +5,15 @@
   <h2>Rooms</h2>
 
   <!-- ROOM TYPES TABLE -->
-    <input type="text" id="roomtypeinput" onkeyup="myFunction()" placeholder="Search for room types.." title="Type in a name">
+  <?php if( !empty($data['status']) ): ?>
+      <?php if( $data['status'] == 409 && $data['for_form'] == 'deleteroomtype' ): ?>
+          <p style="color:red"><?=$data['message']?></p>
+      <?php elseif( $data['status'] == 200 && $data['for_form'] == 'deleteroomtype' ): ?>
+          <p style="color:green"><?=$data['message']?></p>
+      <?php endif; ?>
+  <?php endif; ?>
+
+    <input type="text" id="roomtypeinput" onkeyup="roomtypeinputkeyup()" placeholder="Search for room types.." title="Type in a name">
 
     <table id="roomtypetable">
       <tr class="header">
@@ -20,10 +28,28 @@
             <td>
                 <a href="#"><i class="fas fa-search fa-sm"></i></a>
                 <a style="color:orange" href="#"><i class="fas fa-pencil-alt fa-sm"></i></a>
-                <a style="color:red" href="#"><i class="fas fa-trash fa-sm"></i></a>
+                <a style="color:red" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'show');">
+                    <i class="fas fa-trash fa-sm"></i>
+                </a>
+                <div class="popup">
+                    <span class="popuptext" id="deletepopup-<?php echo $rt['id']; ?>">
+                        <a class="yes" href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/deleteroomtype/<?php echo $rt['id'] ?>">Yes</a>
+                        <a class="no" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'hide');">No</a>
+                    </span>
+                </div>
+
             </td>
           </tr>
       <?php endforeach; ?>
+
+        <?php if( empty($data['roomtypes']->get()) ): ?>
+            <tr>
+                <td>No Room types yet..</td>
+                <td></td>
+                <td></td>
+            </tr>
+        <?php endif; ?>
+
     </table>
   <!-- ROOM TYPES TABLE END -->
 
@@ -61,7 +87,7 @@
             <?php endforeach; ?>
           </select>
 
-          <input class="input-button" type="submit" value="Submit">
+          <input class="input-button" type="submit" value="Add">
         </form>
       </div>
   </div>
@@ -72,21 +98,36 @@
 
 
 <script>
-function myFunction() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("roomtypeinput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("roomtypetable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+    function roomtypeinputkeyup() {
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("roomtypeinput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("roomtypetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
       }
     }
-  }
-}
+</script>
+
+<script>
+    // When the user clicks on div, open the popup
+    function deletepopup(id, action) {
+        var popup = document.getElementById("deletepopup-"+id);
+        if( action == "hide" ){
+            popup.classList.remove("show");
+            popup.classList.add(action);
+        }
+        else{
+            popup.classList.toggle(action);
+        }
+
+    }
 </script>

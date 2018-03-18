@@ -88,6 +88,25 @@ class RoomType{
 
     }
 
+    public function delete($id){
+
+        $this->createConnection();
+
+        $sql = "DELETE FROM room_type WHERE id=".$id;
+
+        if ($this->conn->query($sql) === TRUE) {
+            $this->closeConnection();
+            return true;
+            exit();
+        } else {
+            echo "Error deleting record: " . $conn->error;
+        }
+        return false;
+        $this->closeConnection();
+        exit();
+
+    }
+
     public function rooms($room_type_id){
 
         $this->createConnection();

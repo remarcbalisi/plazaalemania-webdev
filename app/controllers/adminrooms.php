@@ -85,4 +85,43 @@ class AdminRooms extends Controller{
 
     }
 
+    public function deleteroomtype($id){
+
+        $new_room_type = $this->model('RoomType')->delete($id);
+
+        if( $new_room_type ){
+            $status = 200;
+            $status_message = StatusCodes::getCode($status);
+            $message = "Successfully deleted!";
+            $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
+            $this->view('admin/rooms', [
+                'status'=> $status,
+                'status_message' => $status_message,
+                'message' => $message,
+                'for_form' => 'deleteroomtype',
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
+            ]);
+            exit();
+        }
+        else{
+            $status = 409;
+            $status_message = StatusCodes::getCode($status);
+            $message = "Failed to delete this room type";
+            $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
+            $this->view('admin/rooms', [
+                'status'=> $status,
+                'status_message' => $status_message,
+                'message' => $message,
+                'for_form' => 'deleteroomtype',
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
+            ]);
+            exit();
+        }
+
+    }
+
 }

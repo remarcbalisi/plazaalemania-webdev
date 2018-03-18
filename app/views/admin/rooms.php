@@ -47,6 +47,37 @@
     </table>
   <!-- ROOM TYPES TABLE END -->
 
+
+  <!-- ADD ROOM TYPES -->
+  <div class="add-room-types">
+      <div class="container">
+        <h3>Add New Room Type</h3>
+        <form action="/action_page.php">
+          <label for="room_name">Room Name</label>
+          <input class="input" type="text" id="room_name" name="room_name" placeholder="Room name..">
+
+          <label for="price">Price</label>
+          <input class="input" type="number" id="price" name="price" placeholder="₱">
+
+          <label for="max_person">Max Person</label>
+          <input class="input" type="number" id="max_person" name="max_person" placeholder="Max Person">
+
+          <label for="description">Description</label>
+          <textarea class="input" id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
+
+          <label for="branch">Branch</label>
+          <select class="input" id="branch" name="branch">
+            <?php foreach( $data['branches'] as $b ): ?>
+                <option value="<?php echo $b['id']; ?>"><?php echo $b['name']; ?></option>
+            <?php endforeach; ?>
+          </select>
+
+          <input class="input-button" type="submit" value="Submit">
+        </form>
+      </div>
+  </div>
+  <!-- ADD ROOM TYPES END -->
+
 </div>
 
 

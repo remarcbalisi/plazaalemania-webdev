@@ -16,7 +16,11 @@ class AdminRooms extends Controller{
 
         if( $this->auth_user->auth ){
 
-            $this->view('admin/rooms', ['user'=>$this->auth_user]);
+            $branches = $this->model('Branch')->get();
+            $this->view('admin/rooms', [
+                'user'=>$this->auth_user,
+                'branches' => $branches
+            ]);
 
         }
         else{

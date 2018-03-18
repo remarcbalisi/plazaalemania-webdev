@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: Helvetica, Sans-Serif;
+}
+
+.header {
+  background-color: #f1f1f1;
+  text-align: center;
+  overflow: hidden;
+  height: 300px;
+}
+
+    .header .cover-photo {
+       position: relative;
+       width: 100%; /* for IE 6 */
+    }
+
+    .header .cover-photo-title {
+       position: absolute;
+       top: 18%;
+       left: 0;
+       width: 30%;
+       height: 10%;
+       color: white;
+       letter-spacing: -1px;
+       background: rgb(0, 0, 0); /* fallback color */
+       background: rgba(0, 0, 0, 0.7);
+       padding: 10px;
+
+
+       text-align: center;
+       /* border: 2px dashed #f69c55; */
+       text-align: center;
+       vertical-align: middle;
+    }
+
+            .header .cover-photo-title .title {
+              font: bold 24px/45px Helvetica, Sans-Serif;
+
+            }
+
+            .header .cover-photo-title .desc {
+                font: 24px/45px Helvetica, Sans-Serif;
+                font-size: 15px;
+                margin-top: -4%;
+            }
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: maroon;
+  color: white;
+}
+
+#navbar a.active {
+  background-color: maroon;
+  color: white;
+}
+
+.content {
+    margin-left: 75px;
+    padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}

@@ -1,0 +1,78 @@
+.product {
+  box-sizing: border-box;
+}
+
+    .product, .product:before, .product:after {
+      box-sizing: inherit;
+    }
+
+        .product-column {
+          float: left;
+          width: 31.3%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+
+        @media screen and (max-width: 650px) {
+          .product-column {
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+            .card:hover{
+                /* Start the shake animation and make the animation last for 0.5 seconds */
+                animation: shake 0.7s;
+                /* When the animation is finished, start again */
+                /* animation-iteration-count: infinite; */
+            }
+
+    .product-container {
+      padding: 0 16px;
+    }
+
+        .product-container:after, .product-row:after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+
+        .product-title {
+          color: black;
+          text-decoration: none;
+        }
+        .product-price {
+          color: grey;
+        }
+
+    .product-container-button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+        .product-container-button:hover {
+            background-color: #555;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }

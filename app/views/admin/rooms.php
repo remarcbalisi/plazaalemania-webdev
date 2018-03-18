@@ -11,39 +11,19 @@
       <tr class="header">
         <th style="width:60%;">Room Type</th>
         <th style="width:40%;">No. of Rooms</th>
+        <th style="width:40%;">Action</th>
       </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Berglunds snabbkop</td>
-        <td>Sweden</td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td>UK</td>
-      </tr>
-      <tr>
-        <td>Koniglich Essen</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td>Canada</td>
-      </tr>
-      <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td>Italy</td>
-      </tr>
-      <tr>
-        <td>North/South</td>
-        <td>UK</td>
-      </tr>
-      <tr>
-        <td>Paris specialites</td>
-        <td>France</td>
-      </tr>
+      <?php foreach( $data['roomtypes']->get() as $rt ): ?>
+          <tr>
+            <td><?php echo $rt['name']; ?></td>
+            <td><?php echo count($data['roomtypes']->rooms($rt['id'])); ?></td>
+            <td>
+                <a href="#"><i class="fas fa-search fa-sm"></i></a>
+                <a style="color:orange" href="#"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                <a style="color:red" href="#"><i class="fas fa-trash fa-sm"></i></a>
+            </td>
+          </tr>
+      <?php endforeach; ?>
     </table>
   <!-- ROOM TYPES TABLE END -->
 

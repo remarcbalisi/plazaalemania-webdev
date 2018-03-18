@@ -17,9 +17,11 @@ class AdminRooms extends Controller{
         if( $this->auth_user->auth ){
 
             $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
             $this->view('admin/rooms', [
                 'user'=>$this->auth_user,
-                'branches' => $branches
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
             ]);
 
         }
@@ -50,12 +52,14 @@ class AdminRooms extends Controller{
             $message = "Successfully added " . $new_room_type->name;
 
             $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroomtype',
-                'branches' => $branches
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
             ]);
 
             exit();
@@ -66,12 +70,14 @@ class AdminRooms extends Controller{
             $status_message = StatusCodes::getCode($status);
             $message = "Room Type Already Exists!";
             $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroomtype',
-                'branches' => $branches
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
             ]);
             exit();
         }

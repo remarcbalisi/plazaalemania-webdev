@@ -67,7 +67,7 @@
             <?php endif; ?>
         <?php endif; ?>
 
-        <form method="POST" action="<?php echo Globals::baseUrl(); ?>/public/adminrooms/addroomtype">
+        <form method="POST" action="<?php echo Globals::baseUrl(); ?>/public/adminrooms/addroomtype" enctype="multipart/form-data">
           <label for="room_name">Room Name</label>
           <input class="input" type="text" id="room_name" name="room_name" placeholder="Room name..">
 
@@ -86,6 +86,21 @@
                 <option value="<?php echo $b['id']; ?>"><?php echo $b['name']; ?></option>
             <?php endforeach; ?>
           </select>
+
+          <label for="room_img1">Upload Image (Recommended: 800 x 532)</label>
+
+          <div class="addimagegroup">
+              <div id="imageinputfield">
+                  <input type="file" name="room_img1" class="input" id="inputGroupFile1" required>
+              </div>
+
+              <input type="hidden" name="image_count" id="image_count" value="1">
+              <i style="color:green;" class="fas fa-plus fa-sm"><a style="text-decoration:none;color:green" href="javascript:;" onclick="imagefield('add')">&nbsp;More</a></i> &nbsp;
+              <i id="remove_img" style="color:red;text-decoration:none;display:none" class="fas fa-minus fa-sm"><a style="text-decoration:none;color:red" href="javascript:;" onclick="imagefield('remove')">&nbsp;Remove</a></i>
+          </div>
+
+
+          <br>
 
           <input class="input-button" type="submit" value="Add">
         </form>
@@ -129,5 +144,42 @@
             popup.classList.toggle(action);
         }
 
+    }
+</script>
+
+<script type="text/javascript">
+    var imagecount = 1;
+    function imagefield(action){
+        // inputGroupFile1
+        var imagefield = $("#imageinputfield");
+
+        if( action == 'add' ){
+            imagecount++;
+            console.log(imagecount);
+            if( imagecount > 1 ){
+                $("#remove_img").show();
+            }
+            else{
+                $("#remove_img").hide();
+            }
+            imagefield.append(function(){
+                to_string = "";
+                to_string += '<input type="file" name="room_img'+imagecount+'" class="input" id="inputGroupFile'+imagecount+'" required>';
+                return to_string;
+            });
+        }
+        else{
+            $("#inputGroupFile"+imagecount).remove();
+            imagecount--;
+            if( imagecount > 1 ){
+                $("#remove_img").show();
+            }
+            else{
+                $("#remove_img").hide();
+            }
+
+        }
+
+        document.getElementById('image_count').value = imagecount;
     }
 </script>

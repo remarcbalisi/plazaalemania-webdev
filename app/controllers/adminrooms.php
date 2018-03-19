@@ -70,102 +70,133 @@ class AdminRooms extends Controller{
                     $image = $_FILES['room_img'.$i];
                     $imageFileType = strtolower(pathinfo($image["name"],PATHINFO_EXTENSION));
                     $filename  = "original_".time() . '.' . $imageFileType;
-                    $path = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
 
-                    // $path = Storage::put('public/rooms', $image, 'public');
-                    // $new_gallery = new Gallery;
-                    // $new_gallery->image_name = str_replace("public/rooms/", "", $path);
-                    // $new_gallery->directory = str_replace("public", "/storage", $path);
-                    // $new_gallery->dimension = "original";
-                    // $new_gallery->room_id = $new_room->id;
-                    // $new_gallery->save();
 
-                    $img = $this->image_manager->make($image["tmp_name"]);
-                    echo $image["tmp_name"];
-                    move_uploaded_file($img, $path);
+                    move_uploaded_file($_FILES['room_img'.$i]["tmp_name"], $path_server);
+                    $img = $this->image_manager->make($path_server)->save();
                     $new_room_gallery = $this->model('RoomGallery');
                     $new_room_gallery->image_name = $filename;
-                    $new_room_gallery->directory = $path;
+                    $new_room_gallery->directory = $path_http;
                     $new_room_gallery->dimension = "original";
                     $new_room_gallery->room_type_id = $new_room_type->id;
                     $new_room_gallery = $new_room_gallery->save($new_room_gallery);
 
-                    // // 800 x 532
-                    // $filename  = "800x532_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(800, 532)->save($path);
-                    // $new_gallery_800x532 = new Gallery;
-                    // $new_gallery_800x532->image_name = $filename;
-                    // $new_gallery_800x532->directory = "images/rooms/".$filename;
-                    // $new_gallery_800x532->dimension = "800x532";
-                    // $new_gallery_800x532->room_id = $new_room->id;
-                    // $new_gallery_800x532->save();
-                    //
+                    // 800 x 532
+                    $img = $this->image_manager->make($path_server)->fit(800, 532);
+
+                    $filename  = "800x532_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "800x532";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
+
                     // // 800 x 477
-                    // $filename  = "800x477_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(800, 477)->save($path);
-                    // $new_gallery_800x477 = new Gallery;
-                    // $new_gallery_800x477->image_name = $filename;
-                    // $new_gallery_800x477->directory = "images/rooms/".$filename;
-                    // $new_gallery_800x477->dimension = "800x477";
-                    // $new_gallery_800x477->room_id = $new_room->id;
-                    // $new_gallery_800x477->save();
-                    //
+
+                    $img = $this->image_manager->make($path_server)->fit(800, 477);
+
+                    $filename  = "800x477_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "800x477";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
+
                     // // 370 x 305
-                    // $filename  = "370x305_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(370, 305)->save($path);
-                    // $new_gallery_370x305 = new Gallery;
-                    // $new_gallery_370x305->image_name = $filename;
-                    // $new_gallery_370x305->directory = "images/rooms/".$filename;
-                    // $new_gallery_370x305->dimension = "370x305";
-                    // $new_gallery_370x305->room_id = $new_room->id;
-                    // $new_gallery_370x305->save();
-                    //
+                    $img = $this->image_manager->make($path_server)->fit(370, 305);
+
+                    $filename  = "370x305_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "370x305";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
+
                     // // 370 x 229
-                    // $filename  = "370x229_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(370, 229)->save($path);
-                    // $new_gallery_370x229 = new Gallery;
-                    // $new_gallery_370x229->image_name = $filename;
-                    // $new_gallery_370x229->directory = "images/rooms/".$filename;
-                    // $new_gallery_370x229->dimension = "370x229";
-                    // $new_gallery_370x229->room_id = $new_room->id;
-                    // $new_gallery_370x229->save();
-                    //
-                    // // 368 x 265
-                    // $filename  = "368x265_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(368, 265)->save($path);
-                    // $new_gallery_368x265 = new Gallery;
-                    // $new_gallery_368x265->image_name = $filename;
-                    // $new_gallery_368x265->directory = "images/rooms/".$filename;
-                    // $new_gallery_368x265->dimension = "368x265";
-                    // $new_gallery_368x265->room_id = $new_room->id;
-                    // $new_gallery_368x265->save();
+                    $img = $this->image_manager->make($path_server)->fit(370, 229);
+
+                    $filename  = "370x229_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "370x229";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
                     //
                     // // 670 x 265
-                    // $filename  = "670x265_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(670, 265)->save($path);
-                    // $new_gallery_670x265 = new Gallery;
-                    // $new_gallery_670x265->image_name = $filename;
-                    // $new_gallery_670x265->directory = "images/rooms/".$filename;
-                    // $new_gallery_670x265->dimension = "670x265";
-                    // $new_gallery_670x265->room_id = $new_room->id;
-                    // $new_gallery_670x265->save();
+                    $img = $this->image_manager->make($path_server)->fit(670, 265);
+
+                    $filename  = "670x265_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "670x265";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
+
+
+                    // // 368 x 265
+                    $img = $this->image_manager->make($path_server)->fit(368, 265);
+
+                    $filename  = "368x265_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "368x265";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
+
                     //
                     // // 122 x 122
-                    // $filename  = "122x122_".time() . '.' . $image->getClientOriginalExtension();
-                    // $path = public_path('images/rooms/' . $filename);
-                    // $img = Image::make($image)->fit(122, 122)->save($path);
-                    // $new_gallery_122x122 = new Gallery;
-                    // $new_gallery_122x122->image_name = $filename;
-                    // $new_gallery_122x122->directory = "images/rooms/".$filename;
-                    // $new_gallery_122x122->dimension = "122x122";
-                    // $new_gallery_122x122->room_id = $new_room->id;
-                    // $new_gallery_122x122->save();
+                    $img = $this->image_manager->make($path_server)->fit(122, 122);
+
+                    $filename  = "122x122_".time() . '.' . $imageFileType;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
+                    $img->save($path_server);
+
+
+                    $new_room_gallery = $this->model('RoomGallery');
+                    $new_room_gallery->image_name = $filename;
+                    $new_room_gallery->directory = $path_http;
+                    $new_room_gallery->dimension = "122x122";
+                    $new_room_gallery->room_type_id = $new_room_type->id;
+                    $new_room_gallery = $new_room_gallery->save($new_room_gallery);
                 }
             }
 

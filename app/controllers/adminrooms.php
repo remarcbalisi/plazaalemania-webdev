@@ -238,6 +238,53 @@ class AdminRooms extends Controller{
 
     }
 
+    public function addroom(){
+
+        $new_room = $this->model('Room');
+
+        if( !$new_room->getByNumber($_POST['room_no']) ){
+            $new_room->number = $_POST['room_no'];
+            $new_room->room_type_id = $_POST['room_type_id'];
+            $new_room = $new_room->save($new_room);
+
+            $status = 200;
+            $status_message = StatusCodes::getCode($status);
+            $message = "Successfully added Room no. " . $new_room->number;
+
+            $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
+            $this->view('admin/rooms', [
+                'status'=> $status,
+                'status_message' => $status_message,
+                'message' => $message,
+                'for_form' => 'addroom',
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
+            ]);
+
+            exit();
+
+        }
+        else{
+            $status = 409;
+            $status_message = StatusCodes::getCode($status);
+            $message = "Room Already Exists!";
+            $branches = $this->model('Branch')->get();
+            $roomtypes = $this->model("RoomType");
+            $this->view('admin/rooms', [
+                'status'=> $status,
+                'status_message' => $status_message,
+                'message' => $message,
+                'for_form' => 'addroom',
+                'branches' => $branches,
+                'roomtypes' => $roomtypes
+            ]);
+            exit();
+        }
+
+
+    }
+
     public function deleteroomtype($id){
 
         $new_room_type = $this->model('RoomType')->delete($id);

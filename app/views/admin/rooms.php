@@ -33,6 +33,7 @@
                 </a>
                 <div class="popup">
                     <span class="popuptext" id="deletepopup-<?php echo $rt['id']; ?>">
+                        Are you sure?<br>
                         <a class="yes" href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/deleteroomtype/<?php echo $rt['id'] ?>">Yes</a>
                         <a class="no" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'hide');">No</a>
                     </span>
@@ -52,6 +53,38 @@
 
     </table>
   <!-- ROOM TYPES TABLE END -->
+
+ <!-- ADD ROOM -->
+
+ <div class="add-room-types">
+     <div class="container">
+       <h3>Add New Room</h3>
+
+       <?php if( !empty($data['status']) ): ?>
+           <?php if( $data['status'] == 409 && $data['for_form'] == 'addroom' ): ?>
+               <p style="color:red"><?=$data['message']?></p>
+           <?php elseif( $data['status'] == 200 && $data['for_form'] == 'addroom' ): ?>
+               <p style="color:green"><?=$data['message']?></p>
+           <?php endif; ?>
+       <?php endif; ?>
+
+       <form method="POST" action="<?php echo Globals::baseUrl(); ?>/public/adminrooms/addroom">
+         <label for="room_no">Room Number</label>
+         <input class="input" type="text" id="room_no" name="room_no" placeholder="Room number..">
+
+
+         <label for="room_type_id">Room Type</label>
+         <select class="input" id="room_type_id" name="room_type_id">
+           <?php foreach( $data['roomtypes']->get() as $rt ): ?>
+               <option value="<?php echo $rt['id']; ?>"><?php echo $rt['name']; ?></option>
+           <?php endforeach; ?>
+         </select>
+
+         <input class="input-button" type="submit" value="Add">
+       </form>
+     </div>
+ </div>
+ <!-- ADD ROOM END -->
 
 
   <!-- ADD ROOM TYPES -->

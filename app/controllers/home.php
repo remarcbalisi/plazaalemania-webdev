@@ -3,13 +3,15 @@
 class Home extends Controller{
 
     public function index(){
-
-        $this->view('index');
+        $roomtypes = $this->model('RoomType');
+        $this->view('index', [
+            'roomtypes' => $roomtypes
+        ]);
 
     }
 
     public function viewRoom(){
-        
+
     }
 
 }

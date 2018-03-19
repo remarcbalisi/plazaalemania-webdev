@@ -5,6 +5,7 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/index.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/product-display.css">
+    <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/text-wrap.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/jquery-ui.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/stickysocial.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">

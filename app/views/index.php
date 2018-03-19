@@ -12,111 +12,41 @@
 
 
     <div class="product">
-        <div class="product-row">
-          <div class="product-column">
-            <div class="card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
-              <div class="product-container">
-                  <h2>
-                      <a class="product-title" href="#">Coral Room</a>
-                  </h2>
-                <p class="product-price">Php 700.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
 
-          <div class="product-column">
-            <div class="card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
-              <div class="product-container">
-                  <h2>
-                      <a class="product-title" href="#">Onyx Room</a>
-                  </h2>
-                <p class="product-price">Php 1000.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
-          <div class="product-column">
-            <div class="card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
-              <div class="product-container">
-                  <h2>
-                      <a class="product-title" href="#">Sapphire Room</a>
-                  </h2>
-                <p class="product-price">Php 1500.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php $counter = 0; ?>
+        <?php foreach( $data['roomtypes']->get() as $rt ): ?>
+                <?php if( $counter % 3 == 0 ): ?>
+                    <div class="product-row">
+                <?php endif; ?>
 
-        <div class="product-row">
-          <div class="product-column">
-            <div class="card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
-              <div class="product-container">
-                <h2>
-                    <a class="product-title" href="#">Coral Room</a>
-                </h2>
-                <p class="product-price">Php 700.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
+                    <div class="product-column">
+                      <div class="card">
+                          <div class="product-image-wrapper">
+                              <img class="product-image" src="<?php echo $data['roomtypes']->getImages($rt['id'], '800x532')[0]['directory']; ?>" alt="Mike" style="width:100%">
+                          </div>
+                        <div class="product-container">
+                            <h2>
+                                <a class="product-title" href="#"><?php echo $rt['name'] ?></a>
+                            </h2>
+                          <p class="product-price">Php <?php echo number_format($rt['price'], 2, '.', ',') ?></p>
 
-          <div class="product-column">
-            <div class="card">
+                          <div class="text ellipsis">
+                              <p class="text-concat"><?php echo $rt['description'] ?></p>
+                          </div>
 
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
+                          <!-- <p>example@example.com</p> -->
+                          <p><button class="product-container-button">Reserve Now</button></p>
+                        </div>
+                      </div>
+                    </div>
 
-              <div class="product-container">
-                  <h2>
-                      <a class="product-title" href="#">Onyx Room</a>
-                  </h2>
-                <p class="product-price">Php 1000.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
-          <div class="product-column">
-            <div class="card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="Mike" style="width:100%">
-                </div>
-              <div class="product-container">
-                <h2>
-                    <a class="product-title" href="#">Sapphire Room</a>
-                </h2>
-                <p class="product-price">Php 1500.00</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="product-container-button">Reserve Now</button></p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+                <?php $counter++; ?>
+                <?php if( $counter == 3 ): ?>
+                    </div>
+                    <?php $counter=0; ?>
+                <?php endif; ?>
+        <?php endforeach; ?>
 
     </div>
 

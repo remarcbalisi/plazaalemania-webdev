@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- STYLES -->
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/index.css">
+    <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/admin/css/add-room-type.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/product-display.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/text-wrap.css">
     <link rel="stylesheet" href="<?php echo Globals::baseUrl(); ?>/public/index/css/jquery-ui.css">
@@ -25,6 +26,7 @@
       <a id="room-rates-nav" href="<?php echo Globals::baseUrl(); ?>/public/roomrates">Room Rates</a>
       <a id="contact-us-nav" href="javascript:void(0)">Contact Us</a>
       <a id="room-name-nav" href="javascript:void(0)"></a>
+      <a id="reservation-nav" href="javascript:void(0)"></a>
     </div>
 
     <div class="icon-bar">

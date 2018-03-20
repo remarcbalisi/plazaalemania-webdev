@@ -35,7 +35,12 @@
                           </div>
 
                           <!-- <p>example@example.com</p> -->
-                          <p><button class="product-container-button">Reserve Now</button></p>
+
+                          <p>
+                              <a href="<?php echo Globals::baseUrl(); ?>/public/customerreservation/<?php echo $rt['name'] ?>">
+                                  <button class="product-container-button" type="button" name="button">Reserve now</button>
+                              </a>
+                          </p>
                         </div>
                       </div>
                     </div>

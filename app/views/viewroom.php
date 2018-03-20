@@ -134,7 +134,9 @@ img {
     <h1><?php echo $data['roomtype'][0]['name'] ?></h1>
     <h3>Php <?php echo number_format($data['roomtype'][0]['price'], 2, '.', ',') ?></h3>
     <p><?php echo $data['roomtype'][0]['description'] ?></p>
-    <button class="product-container-button" type="button" name="button">Reserve now</button>
+    <a href="<?php echo Globals::baseUrl(); ?>/public/customerreservation/<?php echo $data['roomtype'][0]['name'] ?>">
+        <button class="product-container-button" type="button" name="button">Reserve now</button>
+    </a>
 </div>
 
 

@@ -20,33 +20,10 @@
 </head>
 <body>
 
-    <div class="header">
-
-      <div class="cover-photo">
-
-          <div id="cover-photo-wrapper" class="cover-photo-wrapper">
-              <img id="cover-photo-img" src="<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo1.jpg" alt="">
-          </div>
-
-
-          <div class="cover-photo-title">
-                  <div class="title" >Plaza Alemania Hotel</div>
-                  <div class="desc">
-                      Discover a hotel that defines a new dimension of luxury.
-                  </div>
-
-          </div>
-
-      </div>
-
-    </div>
-
-
-
     <div id="navbar">
-        <a id="home-nav" class="active" href="<?php echo Globals::baseUrl(); ?>/public/">Home</a>
-        <a id="room-rates-nav" href="<?php echo Globals::baseUrl(); ?>/public/roomrates">Room Rates</a>
-        <a href="javascript:void(0)">Contact Us</a>
+      <a id="home-nav" class="active" href="<?php echo Globals::baseUrl(); ?>/public/">Home</a>
+      <a id="room-rates-nav" href="<?php echo Globals::baseUrl(); ?>/public/roomrates">Room Rates</a>
+      <a id="contact-us-nav" href="javascript:void(0)">Contact Us</a>
     </div>
 
     <div class="icon-bar">

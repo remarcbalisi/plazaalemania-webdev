@@ -30,6 +30,23 @@ class Room{
 
     }
 
+    public function availability($roomid, $availability){
+
+        $this->createConnection();
+
+        $sql = "UPDATE room SET is_available = ".$availability. " WHERE id = ".$roomid;
+
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+
+        } else {
+            echo "Error updating record: " . $this->conn->error;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getRoomType($roomtypeid){
 
         $this->createConnection();

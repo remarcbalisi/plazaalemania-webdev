@@ -696,6 +696,19 @@ class AdminRooms extends Controller{
 
     }
 
+    public function availability($roomid, $availability){
+
+        $this->model('Room')->availability($roomid, $availability);
+        $branches = $this->model('Branch')->get();
+        $roomtypes = $this->model("RoomType");
+        $rooms = $this->model("Room");
+        $this->view('admin/rooms', [
+            'branches' => $branches,
+            'roomtypes' => $roomtypes,
+            'rooms' => $rooms
+        ]);
+    }
+
     public function deleteroomtype($id){
 
         $new_room_type = $this->model('RoomType')->delete($id);

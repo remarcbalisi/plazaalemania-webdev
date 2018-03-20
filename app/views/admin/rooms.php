@@ -98,7 +98,11 @@
                    <td><?php echo ($r['is_available'] ? "Yes" : "No") ?></td>
                    <td><?php echo $data['rooms']->getRoomType($r['room_type_id'])[0]['name']; ?></td>
                    <td>
-                       <button type="button" class="input-button" name="button">Make Available</button>
+
+                       <a href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/availability/<?php echo $r['id'] ?>/<?php echo ($r['is_available'] ? 0 : 1) ?>">
+                           <button type="button" class="input-button" name="button"><?php echo ($r['is_available'] ? "Make Unavailable" : "Make Available") ?></button>
+                       </a>
+
                    </td>
                  </tr>
              <?php endif; ?>

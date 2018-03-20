@@ -30,6 +30,62 @@ class Room{
 
     }
 
+    public function getRoomType($roomtypeid){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room_type WHERE id=".$roomtypeid;
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
+    public function get(){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getWithNoRoomType(){
 
         $this->createConnection();

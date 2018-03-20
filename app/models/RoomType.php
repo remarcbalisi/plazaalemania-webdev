@@ -39,6 +39,55 @@ class RoomType{
 
     }
 
+    public function getRooms($roomtypeid, $availability=null){
+        //availability YES || NO
+        $this->createConnection();
+
+        $sql = null;
+        $result = null;
+        $data = null;
+
+        if( $availability ){
+
+            if( $availability == 'YES' ){
+                $sql = "SELECT * FROM room WHERE is_available=1 AND room_type_id=".$roomtypeid;
+                $result = $this->conn->query($sql);
+                $data = [];
+            }
+            else{
+                $sql = "SELECT * FROM room WHERE is_available=0 AND room_type_id=".$roomtypeid;
+                $result = $this->conn->query($sql);
+                $data = [];
+            }
+
+        }
+        else{
+            $sql = "SELECT * FROM room";
+            $result = $this->conn->query($sql);
+            $data = [];
+        }
+
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getById($id){
 
         $this->createConnection();

@@ -51,6 +51,11 @@
 
     </div>
 
+    <a href="<?php echo Globals::baseUrl(); ?>/public/roomrates">
+        <button class="product-container-button" type="button" name="button">View more</button>
+    </a>
+
+
 </div>
 
 <script type="text/javascript">

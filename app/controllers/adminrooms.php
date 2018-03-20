@@ -73,7 +73,7 @@ class AdminRooms extends Controller{
                     $image = $_FILES['room_img'.$i];
                     $imageFileType = strtolower(pathinfo($image["name"],PATHINFO_EXTENSION));
                     $filename  = "original_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
 
 
@@ -91,7 +91,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 532);
 
                     $filename  = "800x532_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -109,7 +109,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 477);
 
                     $filename  = "800x477_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -126,7 +126,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 305);
 
                     $filename  = "370x305_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -143,7 +143,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 229);
 
                     $filename  = "370x229_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -160,7 +160,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(670, 265);
 
                     $filename  = "670x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -178,7 +178,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(368, 265);
 
                     $filename  = "368x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -196,7 +196,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(122, 122);
 
                     $filename  = "122x122_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -358,7 +358,7 @@ class AdminRooms extends Controller{
 
 
                     $filename  = "original_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
 
                     move_uploaded_file($_FILES['room_img'.$i."_".$i]["tmp_name"], $path_server);
@@ -378,7 +378,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 532);
 
                     $filename  = "800x532_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -398,7 +398,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 477);
 
                     $filename  = "800x477_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -417,7 +417,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 305);
 
                     $filename  = "370x305_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -436,7 +436,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 229);
 
                     $filename  = "370x229_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -455,7 +455,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(670, 265);
 
                     $filename  = "670x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -475,7 +475,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(368, 265);
 
                     $filename  = "368x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -495,7 +495,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(122, 122);
 
                     $filename  = "122x122_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -523,7 +523,7 @@ class AdminRooms extends Controller{
                     $image = $_FILES['room_img'.$i];
                     $imageFileType = strtolower(pathinfo($image["name"],PATHINFO_EXTENSION));
                     $filename  = "original_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
 
 
@@ -540,7 +540,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 532);
 
                     $filename  = "800x532_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -557,7 +557,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(800, 477);
 
                     $filename  = "800x477_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -573,7 +573,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 305);
 
                     $filename  = "370x305_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -589,7 +589,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(370, 229);
 
                     $filename  = "370x229_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -605,7 +605,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(670, 265);
 
                     $filename  = "670x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -622,7 +622,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(368, 265);
 
                     $filename  = "368x265_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 
@@ -639,7 +639,7 @@ class AdminRooms extends Controller{
                     $img = $this->image_manager->make($path_server)->fit(122, 122);
 
                     $filename  = "122x122_".time() . '.' . $imageFileType;
-                    $path_server = $_SERVER['DOCUMENT_ROOT']."/plazaalemaniawebdev/public/img/rooms/".$filename;
+                    $path_server = $_SERVER['DOCUMENT_ROOT']."/public/img/rooms/".$filename;
                     $path_http = Globals::baseUrl()."/public/img/rooms/".$filename;
                     $img->save($path_server);
 

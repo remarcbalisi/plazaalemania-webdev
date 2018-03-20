@@ -142,7 +142,7 @@
         // Get the snackbar DIV
         var x = document.getElementById("snackbar");
         $.ajax({
-        url: 'http://localhost/plazaalemaniawebdev/public/customerreservation/checkavailability/<?php echo $data['roomtype'][0]['name'] ?>',
+        url: 'http://plazaalemania.epizy.com/public/customerreservation/checkavailability/<?php echo $data['roomtype'][0]['name'] ?>',
         data: {
           json : json_data
         },

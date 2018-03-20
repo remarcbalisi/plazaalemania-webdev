@@ -24,6 +24,7 @@
       <a id="home-nav" class="active" href="<?php echo Globals::baseUrl(); ?>/public/">Home</a>
       <a id="room-rates-nav" href="<?php echo Globals::baseUrl(); ?>/public/roomrates">Room Rates</a>
       <a id="contact-us-nav" href="javascript:void(0)">Contact Us</a>
+      <a id="room-name-nav" href="javascript:void(0)"></a>
     </div>
 
     <div class="icon-bar">

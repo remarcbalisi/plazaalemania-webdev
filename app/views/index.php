@@ -26,7 +26,7 @@
                           </div>
                         <div class="product-container">
                             <h2>
-                                <a class="product-title" href="#"><?php echo $rt['name'] ?></a>
+                                <a class="product-title" href="<?php echo Globals::baseUrl(); ?>/public/viewroom/<?php echo $rt['name'] ?>"><?php echo $rt['name'] ?></a>
                             </h2>
                           <p class="product-price">Php <?php echo number_format($rt['price'], 2, '.', ',') ?></p>
 

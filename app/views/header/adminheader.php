@@ -27,6 +27,7 @@
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a>
   <a href="<?php echo Globals::baseUrl() ?>/public/adminhome/logout">Logout</a>
+  <a href="<?php echo Globals::baseUrl() ?>/public/" target="_blank">Visit Site</a>
 </div>
 
 </body>

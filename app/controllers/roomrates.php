@@ -1,10 +1,10 @@
 <?php
 
-class Home extends Controller{
+class RoomRates extends Controller{
 
     public function index(){
         $roomtypes = $this->model('RoomType');
-        $this->view('index', [
+        $this->view('roomrates', [
             'roomtypes' => $roomtypes
         ]);
 

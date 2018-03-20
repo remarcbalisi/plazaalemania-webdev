@@ -39,11 +39,116 @@ class RoomType{
 
     }
 
+    public function getRooms($roomtypeid, $availability=null){
+        //availability YES || NO
+        $this->createConnection();
+
+        $sql = null;
+        $result = null;
+        $data = null;
+
+        if( $availability ){
+
+            if( $availability == 'YES' ){
+                $sql = "SELECT * FROM room WHERE is_available=1 AND room_type_id=".$roomtypeid;
+                $result = $this->conn->query($sql);
+                $data = [];
+            }
+            else{
+                $sql = "SELECT * FROM room WHERE is_available=0 AND room_type_id=".$roomtypeid;
+                $result = $this->conn->query($sql);
+                $data = [];
+            }
+
+        }
+        else{
+            $sql = "SELECT * FROM room";
+            $result = $this->conn->query($sql);
+            $data = [];
+        }
+
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
+    public function getById($id){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room_type WHERE id='".$id."'";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getByName($name){
 
         $this->createConnection();
 
         $sql = "SELECT * FROM room_type WHERE name='".$name."'";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
+    public function getByNameAndBranchId($name, $branchid){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room_type WHERE name='".$name."' AND branch_id=".$branchid;
         $result = $this->conn->query($sql);
         $data = [];
 
@@ -88,6 +193,52 @@ class RoomType{
 
     }
 
+    public function update($model){
+
+        $this->createConnection();
+
+        $sql = "UPDATE room_type SET name='".$model->name."', description='".mysqli_real_escape_string($this->conn,$model->description)."', price=".floatval($model->price).",
+        branch_id=".$model->branch_id.", max_person=".$model->max_person." WHERE id=".$model->id."";
+
+        if ($this->conn->query($sql) === TRUE) {
+            return $model;
+
+        } else {
+            echo "Error updating record: " . $this->conn->error;
+        }
+
+        $this->closeConnection();
+
+    }
+
+    public function getBranch($branch_id){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM branch WHERE id=".$branch_id;
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function delete($id){
 
         $this->createConnection();
@@ -99,7 +250,7 @@ class RoomType{
             return true;
             exit();
         } else {
-            echo "Error deleting record: " . $conn->error;
+            echo "Error deleting record: " . $this->conn->error;
         }
         return false;
         $this->closeConnection();
@@ -114,6 +265,43 @@ class RoomType{
         $sql = "SELECT * FROM room WHERE room_type_id=".$room_type_id."";
         $result = $this->conn->query($sql);
         $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
+    public function getImages($room_type_id, $dimension=null){
+
+        $this->createConnection();
+        $sql=null;
+        $result=null;
+        $data = [];
+        if( $dimension ){
+            $sql = "SELECT * FROM room_gallery WHERE room_type_id=".$room_type_id." AND dimension='".$dimension."'";
+            $result = $this->conn->query($sql);
+            $data = [];
+        }
+        else{
+            $sql = "SELECT * FROM room_gallery WHERE room_type_id=".$room_type_id."";
+            $result = $this->conn->query($sql);
+            $data = [];
+        }
 
         if (!$result) {
             trigger_error('Invalid query: ' . $this->conn->error);

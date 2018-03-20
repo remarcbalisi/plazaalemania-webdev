@@ -1,15 +1,13 @@
-<?php include_once '../app/views/header/indexheader.php' ?>
-<?php include_once '../app/views/body.php' ?>
+<?php include_once '../app/views/header/indexwithoutsliderheader.php' ?>
+<?php include_once '../app/views/bodywithoutslider.php' ?>
 
 <div class="content">
 
-    <div class="content-paragraph">
-        <i class="fas fa-quote-left fa-2x fa-pull-left fa-border"></i>
-        <p>
-            Set on the peaceful Hotel Rooms of Plaza Alemania, the Hotel welcomes guests with a beautiful grand hall. Elegant rooms, boasts a private hot tub for guests to relax in.
-        </p>
-    </div>
-
+    <style media="screen">
+        .product{
+            margin-top: 4% !important;
+        }
+    </style>
 
     <div class="product">
 
@@ -35,7 +33,6 @@
                           </div>
 
                           <!-- <p>example@example.com</p> -->
-
                           <p>
                               <a href="<?php echo Globals::baseUrl(); ?>/public/customerreservation/<?php echo $rt['name'] ?>">
                                   <button class="product-container-button" type="button" name="button">Reserve now</button>
@@ -49,37 +46,19 @@
                 <?php $counter++; ?>
                 <?php if( $counter == 3 ): ?>
                     </div>
-                    <?php break; ?>
                     <?php $counter=0; ?>
                 <?php endif; ?>
         <?php endforeach; ?>
 
     </div>
 
-    <a href="<?php echo Globals::baseUrl(); ?>/public/roomrates">
-        <button class="product-container-button" type="button" name="button">View more</button>
-    </a>
-
-
 </div>
 
-<script type="text/javascript">
-    var photoindex = 2;
-    var lastIndex = 4;
-    function changeCoverPhoto(){
-        var coverphoto = $("#cover-photo-img");
-        var coverphoto_wrapper = $("#cover-photo-wrapper");
-        coverphoto_wrapper.hide( "slide", { }, "slow" );
-        coverphoto.attr("src", "<?php echo Globals::baseUrl(); ?>/public/img/coverphotos/cover-photo"+photoindex+".jpg");
-        coverphoto_wrapper.show( "fade", {  }, "fast" );
-        photoindex++;
-        if( photoindex == lastIndex ){
-            photoindex = 1;
-        }
-    }
 
-    window.setInterval(function(){
-        /// call your function here
-        changeCoverPhoto();
-    }, 5000);  // Change Interval here to test. For eg: 5000 for 5 sec
+<script type="text/javascript">
+
+    $("#room-rates-nav").attr("class", "active");
+    $("#home-nav").attr("class", "");
+    $("#contact-us-nav").attr("class", "");
+
 </script>

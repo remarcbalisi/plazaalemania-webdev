@@ -17,22 +17,25 @@
 
     <table id="roomtypetable">
       <tr class="header">
-        <th style="width:60%;">Room Type</th>
-        <th style="width:40%;">No. of Rooms</th>
-        <th style="width:40%;">Action</th>
+        <th style="width:30%;">Room Type</th>
+        <th style="width:30%;">Branch</th>
+        <th style="width:60%;">No. of Rooms</th>
+        <th style="width:50%;">Action</th>
       </tr>
       <?php foreach( $data['roomtypes']->get() as $rt ): ?>
           <tr>
             <td><?php echo $rt['name']; ?></td>
-            <td><?php echo count($data['roomtypes']->rooms($rt['id'])); ?></td>
+            <td><?php echo $data['roomtypes']->getBranch($rt['branch_id'])[0]['name']; ?></td>
+            <td>Total <?php echo count($data['roomtypes']->rooms($rt['id'])); ?>, <?php echo count($data['roomtypes']->getRooms($rt['id'], 'YES')).' Available' ?>, <?php echo count($data['roomtypes']->getRooms($rt['id'], 'NO')).' Not Available' ?></td>
             <td>
                 <a href="#"><i class="fas fa-search fa-sm"></i></a>
-                <a style="color:orange" href="#"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                <a style="color:orange" href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/editroomtype/<?php echo $rt['id'] ?>"><i class="fas fa-pencil-alt fa-sm"></i></a>
                 <a style="color:red" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'show');">
                     <i class="fas fa-trash fa-sm"></i>
                 </a>
                 <div class="popup">
                     <span class="popuptext" id="deletepopup-<?php echo $rt['id']; ?>">
+                        Are you sure?<br>
                         <a class="yes" href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/deleteroomtype/<?php echo $rt['id'] ?>">Yes</a>
                         <a class="no" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'hide');">No</a>
                     </span>
@@ -52,6 +55,99 @@
 
     </table>
   <!-- ROOM TYPES TABLE END -->
+
+ <!-- ADD ROOM -->
+
+ <div class="add-room-types">
+     <div class="container">
+       <h3>Add New Room</h3>
+
+       <?php if( !empty($data['status']) ): ?>
+           <?php if( $data['status'] == 409 && $data['for_form'] == 'addroom' ): ?>
+               <p style="color:red"><?=$data['message']?></p>
+           <?php elseif( $data['status'] == 200 && $data['for_form'] == 'addroom' ): ?>
+               <p style="color:green"><?=$data['message']?></p>
+           <?php endif; ?>
+       <?php endif; ?>
+
+       <form method="POST" action="<?php echo Globals::baseUrl(); ?>/public/adminrooms/addroom">
+         <label for="room_no">Room Number</label>
+         <input class="input" type="text" id="room_no" name="room_no" placeholder="Room number..">
+
+
+         <label for="room_type_id">Room Type</label>
+         <select class="input" id="room_type_id" name="room_type_id">
+           <?php foreach( $data['roomtypes']->get() as $rt ): ?>
+               <option value="<?php echo $rt['id']; ?>"><?php echo $rt['name']; ?></option>
+           <?php endforeach; ?>
+         </select>
+
+         <input class="input-button" type="submit" value="Add">
+       </form>
+
+       <h2>Rooms</h2>
+       <table id="roomtypetable">
+         <tr class="header">
+           <th style="width:20%;">Room No.</th>
+           <th style="width:20%;">Branch</th>
+           <th style="width:30%;">Available</th>
+           <th style="width:80%;">Room Type</th>
+           <th style="width:70%;">Action</th>
+         </tr>
+         <?php foreach( $data['rooms']->get() as $r ): ?>
+             <?php if( $r['room_type_id'] != null ): ?>
+                 <tr>
+                   <td><?php echo $r['number']; ?></td>
+                   <td><?php echo $data['rooms']->getBranch( $data['rooms']->getRoomType($r['room_type_id'])[0]['branch_id'] )[0]['name']; ?></td>
+                   <td><?php echo ($r['is_available'] ? "Yes" : "No") ?></td>
+                   <td><?php echo $data['rooms']->getRoomType($r['room_type_id'])[0]['name']; ?></td>
+                   <td>
+
+                       <a href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/availability/<?php echo $r['id'] ?>/<?php echo ($r['is_available'] ? 0 : 1) ?>">
+                           <button type="button" class="input-button" name="button"><?php echo ($r['is_available'] ? "Make Unavailable" : "Make Available") ?></button>
+                       </a>
+
+                   </td>
+                 </tr>
+             <?php endif; ?>
+         <?php endforeach; ?>
+
+           <?php if( empty($data['rooms']->get()) ): ?>
+               <tr>
+                   <td>No Rooms yet..</td>
+                   <td></td>
+                   <td></td>
+               </tr>
+           <?php endif; ?>
+
+       </table>
+
+       <h2>Rooms with no Assigned Room types</h2>
+       <table id="roomtypetable">
+         <tr class="header">
+           <th style="width:60%;">Room No.</th>
+           <th style="width:40%;">Available</th>
+         </tr>
+         <?php foreach( $data['rooms']->getWithNoRoomType() as $r ): ?>
+             <tr>
+               <td><?php echo $r['number']; ?></td>
+               <td><?php echo ($r['is_available'] ? "Yes" : "No") ?></td>
+             </tr>
+         <?php endforeach; ?>
+
+           <?php if( empty($data['rooms']->get()) ): ?>
+               <tr>
+                   <td>No Rooms yet..</td>
+                   <td></td>
+               </tr>
+           <?php endif; ?>
+
+       </table>
+
+
+     </div>
+ </div>
+ <!-- ADD ROOM END -->
 
 
   <!-- ADD ROOM TYPES -->

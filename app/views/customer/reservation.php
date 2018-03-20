@@ -89,6 +89,7 @@
                     <input class="input" type="number" name="room_count">
 
                     <input class="product-container-button" type="submit" value="Reserve">
+                    <div id="paypal-button"></div>
                 </div>
 
             </form>
@@ -177,4 +178,39 @@
 
     }
 
+</script>
+
+<script>
+    paypal.Button.render({
+
+        env: 'sandbox', // Or 'production'
+
+        client: {
+            sandbox:    'AZ8m7i304Ql6DcL8CWb77r_dh_DKKqielDNo9LrqlYFHB9dxurrKz3WVGMyVNozJLGzpAUj8_7aqCssx',
+            production: 'AZYKvOgV-UdgQ2QQmn8-A4cfdyj2WvC4zm6gmE04u-qA54KZNxp87w6fRt1n_9dmZdH-pWGRqPqxPFrE'
+        },
+
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '1.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function(payment) {
+
+                // The payment is complete!
+                // You can now show a confirmation message to the customer
+            });
+        }
+
+    }, '#paypal-button');
 </script>

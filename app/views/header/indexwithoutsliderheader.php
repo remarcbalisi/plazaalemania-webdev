@@ -17,6 +17,7 @@
     <!-- JQUERY -->
     <script type="text/javascript" src="<?php echo Globals::baseUrl(); ?>/public/index/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo Globals::baseUrl(); ?>/public/index/js/jquery-ui.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 </head>
 <body>

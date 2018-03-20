@@ -39,6 +39,34 @@ class RoomType{
 
     }
 
+    public function getById($id){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room_type WHERE id='".$id."'";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getByName($name){
 
         $this->createConnection();
@@ -88,6 +116,24 @@ class RoomType{
 
     }
 
+    public function update($model){
+
+        $this->createConnection();
+
+        $sql = "UPDATE room_type SET name='".$model->name."', description='".mysqli_real_escape_string($this->conn,$model->description)."', price=".floatval($model->price).",
+        branch_id=".$model->branch_id.", max_person=".$model->max_person." WHERE id=".$model->id."";
+
+        if ($this->conn->query($sql) === TRUE) {
+            return $model;
+
+        } else {
+            echo "Error updating record: " . $this->conn->error;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function delete($id){
 
         $this->createConnection();
@@ -99,7 +145,7 @@ class RoomType{
             return true;
             exit();
         } else {
-            echo "Error deleting record: " . $conn->error;
+            echo "Error deleting record: " . $this->conn->error;
         }
         return false;
         $this->closeConnection();

@@ -27,7 +27,7 @@
             <td><?php echo count($data['roomtypes']->rooms($rt['id'])); ?></td>
             <td>
                 <a href="#"><i class="fas fa-search fa-sm"></i></a>
-                <a style="color:orange" href="#"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                <a style="color:orange" href="<?php echo Globals::baseUrl(); ?>/public/adminrooms/editroomtype/<?php echo $rt['id'] ?>"><i class="fas fa-pencil-alt fa-sm"></i></a>
                 <a style="color:red" href="javascript:;" onclick="deletepopup('<?php echo $rt['id']; ?>', 'show');">
                     <i class="fas fa-trash fa-sm"></i>
                 </a>

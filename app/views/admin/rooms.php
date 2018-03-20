@@ -82,6 +82,31 @@
 
          <input class="input-button" type="submit" value="Add">
        </form>
+
+       <h2>Rooms with no Assigned Room types</h2>
+       <table id="roomtypetable">
+         <tr class="header">
+           <th style="width:60%;">Room No.</th>
+           <th style="width:40%;">Available</th>
+         </tr>
+         <?php foreach( $data['rooms']->getWithNoRoomType() as $r ): ?>
+             <tr>
+               <td><?php echo $r['number']; ?></td>
+               <td><?php echo ($r['is_available'] ? "Yes" : "No") ?></td>
+             </tr>
+         <?php endforeach; ?>
+
+           <?php if( empty($data['roomtypes']->get()) ): ?>
+               <tr>
+                   <td>No Room types yet..</td>
+                   <td></td>
+                   <td></td>
+               </tr>
+           <?php endif; ?>
+
+       </table>
+
+
      </div>
  </div>
  <!-- ADD ROOM END -->

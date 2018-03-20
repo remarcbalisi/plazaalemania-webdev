@@ -26,10 +26,12 @@ class AdminRooms extends Controller{
 
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'user'=>$this->auth_user,
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
 
         }
@@ -215,13 +217,15 @@ class AdminRooms extends Controller{
 
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroomtype',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
 
             exit();
@@ -233,13 +237,15 @@ class AdminRooms extends Controller{
             $message = "Room Type Already Exists!";
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroomtype',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
             exit();
         }
@@ -262,13 +268,15 @@ class AdminRooms extends Controller{
 
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroom',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
 
             exit();
@@ -280,13 +288,15 @@ class AdminRooms extends Controller{
             $message = "Room Already Exists!";
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroom',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
             exit();
         }
@@ -299,10 +309,12 @@ class AdminRooms extends Controller{
         $branches = $this->model('Branch')->get();
         $roomtypes = $this->model("RoomType");
         $roomtype = $this->model("RoomType")->getById($roomtypeid);
+        $rooms = $this->model("Room");
         $this->view('admin/editroomtype', [
             'branches' => $branches,
             'roomtypes' => $roomtypes,
-            'roomtype' => $roomtype
+            'roomtype' => $roomtype,
+            'rooms' => $rooms
         ]);
 
     }
@@ -648,6 +660,7 @@ class AdminRooms extends Controller{
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
             $roomtype = $this->model("RoomType")->getById($roomtypeid);
+            $rooms = $this->model("Room");
             $this->view('admin/editroomtype', [
                 'status'=> $status,
                 'status_message' => $status_message,
@@ -655,7 +668,8 @@ class AdminRooms extends Controller{
                 'for_form' => 'editroomtype',
                 'branches' => $branches,
                 'roomtypes' => $roomtypes,
-                'roomtype' => $roomtype
+                'roomtype' => $roomtype,
+                'rooms' => $rooms
             ]);
 
             exit();
@@ -667,13 +681,15 @@ class AdminRooms extends Controller{
             $message = "Room Type Already Exists!";
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'addroomtype',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
             exit();
         }
@@ -690,13 +706,15 @@ class AdminRooms extends Controller{
             $message = "Successfully deleted!";
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'deleteroomtype',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
             exit();
         }
@@ -706,13 +724,15 @@ class AdminRooms extends Controller{
             $message = "Failed to delete this room type";
             $branches = $this->model('Branch')->get();
             $roomtypes = $this->model("RoomType");
+            $rooms = $this->model("Room");
             $this->view('admin/rooms', [
                 'status'=> $status,
                 'status_message' => $status_message,
                 'message' => $message,
                 'for_form' => 'deleteroomtype',
                 'branches' => $branches,
-                'roomtypes' => $roomtypes
+                'roomtypes' => $roomtypes,
+                'rooms' => $rooms
             ]);
             exit();
         }

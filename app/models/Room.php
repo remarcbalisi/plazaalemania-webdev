@@ -30,6 +30,34 @@ class Room{
 
     }
 
+    public function getWithNoRoomType(){
+
+        $this->createConnection();
+
+        $sql = "SELECT * FROM room WHERE room_type_id IS NULL";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if (!$result) {
+            trigger_error('Invalid query: ' . $this->conn->error);
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while( $row = $result->fetch_assoc() ){
+                array_push($data, $row);
+            }
+            return $data;
+
+        } else {
+            $result = [];
+            return $result;
+        }
+
+        $this->closeConnection();
+
+    }
+
     public function getByNumber($number){
 
         $this->createConnection();

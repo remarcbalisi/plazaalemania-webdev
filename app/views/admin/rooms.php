@@ -17,13 +17,15 @@
 
     <table id="roomtypetable">
       <tr class="header">
-        <th style="width:40%;">Room Type</th>
-        <th style="width:50%;">No. of Rooms</th>
+        <th style="width:30%;">Room Type</th>
+        <th style="width:30%;">Branch</th>
+        <th style="width:60%;">No. of Rooms</th>
         <th style="width:50%;">Action</th>
       </tr>
       <?php foreach( $data['roomtypes']->get() as $rt ): ?>
           <tr>
             <td><?php echo $rt['name']; ?></td>
+            <td><?php echo $data['roomtypes']->getBranch($rt['branch_id'])[0]['name']; ?></td>
             <td>Total <?php echo count($data['roomtypes']->rooms($rt['id'])); ?>, <?php echo count($data['roomtypes']->getRooms($rt['id'], 'YES')).' Available' ?>, <?php echo count($data['roomtypes']->getRooms($rt['id'], 'NO')).' Not Available' ?></td>
             <td>
                 <a href="#"><i class="fas fa-search fa-sm"></i></a>
@@ -86,15 +88,17 @@
        <h2>Rooms</h2>
        <table id="roomtypetable">
          <tr class="header">
-           <th style="width:50%;">Room No.</th>
+           <th style="width:20%;">Room No.</th>
+           <th style="width:20%;">Branch</th>
            <th style="width:30%;">Available</th>
-           <th style="width:70%;">Room Type</th>
+           <th style="width:80%;">Room Type</th>
            <th style="width:70%;">Action</th>
          </tr>
          <?php foreach( $data['rooms']->get() as $r ): ?>
              <?php if( $r['room_type_id'] != null ): ?>
                  <tr>
                    <td><?php echo $r['number']; ?></td>
+                   <td><?php echo $data['rooms']->getBranch( $data['rooms']->getRoomType($r['room_type_id'])[0]['branch_id'] )[0]['name']; ?></td>
                    <td><?php echo ($r['is_available'] ? "Yes" : "No") ?></td>
                    <td><?php echo $data['rooms']->getRoomType($r['room_type_id'])[0]['name']; ?></td>
                    <td>
